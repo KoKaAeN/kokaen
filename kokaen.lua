@@ -10359,6 +10359,22 @@ Dev_Abs(msg.chat_id_, msg.id_, 1, (Help or Text), 1, 'md')
 end
 --     Source kokaen     --
 if SecondSudo(msg) then
+if text == 'تحديث المتجر' then 
+io.popen("mkdir Files")
+os.execute("rm -fr Files/*")
+io.popen("cd Files && wget https://raw.githubusercontent.com/KoKaAeN/kokaenFiles/main/kokaenFiles/AddedMe.lua") 
+io.popen("cd Files && wget https://raw.githubusercontent.com/KoKaAeN/kokaenFiles/main/kokaenFiles/AutoFile.lua")  
+io.popen("cd Files && wget https://raw.githubusercontent.com/KoKaAeN/kokaenFiles/main/kokaenFiles/ChangeName.lua") 
+io.popen("cd Files && wget https://raw.githubusercontent.com/KoKaAeN/kokaenFiles/main/kokaenFiles/ChangePhoto.lua") 
+io.popen("cd Files && wget https://raw.githubusercontent.com/KoKaAeN/kokaenFiles/main/kokaenFiles/ChangeUser.lua") 
+io.popen("cd Files && wget https://raw.githubusercontent.com/KoKaAeN/kokaenFiles/main/kokaenFiles/MuteNames.lua") 
+io.popen("cd Files && wget https://raw.githubusercontent.com/KoKaAeN/kokaenFiles/main/kokaenFiles/ProNames.lua") 
+io.popen("cd Files && wget https://raw.githubusercontent.com/KoKaAeN/kokaenFiles/main/kokaenFiles/ReplyBot.lua") 
+io.popen("cd Files && wget https://raw.githubusercontent.com/KoKaAeN/kokaenFiles/main/kokaenFiles/TagAdmins.lua") 
+io.popen("cd Files && wget https://raw.githubusercontent.com/KoKaAeN/kokaenFiles/main/kokaenFiles/TagAll.lua") 
+Dev_Abs(msg.chat_id_, msg.id_, 1, '♪︙تم تحديث المتجر الى الاصدار الجديد', 1, 'md') 
+dofile('kokaen.lua') 
+end
 if text == "تحديث السورس" or text == "تحديث سورس" then 
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙جاري تحديث سورس كوكائين', 1, 'md') 
 os.execute('rm -rf kokaen.lua') 
