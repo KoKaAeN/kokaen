@@ -10356,7 +10356,7 @@ local Users = DevAbs:smembers(kokaen.."User_Bot")
 local Groups = DevAbs:smembers(kokaen..'Chek:Groups')
 local Sudos = DevAbs:smembers(kokaen.."Sudo:User")
 if DevAbs:get(kokaen..'Name:Bot') then
-DevAbs:set(kokaen..'Abs:NameBot',(DevAbs:get(kokaen..'Name:Bot') or 'وطن'))
+DevAbs:set(kokaen..'Abs:NameBot',(DevAbs:get(kokaen..'Name:Bot') or 'كوكائين'))
 end
 for i = 1, #Users do
 local id = Users[i]
