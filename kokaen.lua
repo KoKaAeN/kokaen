@@ -10351,6 +10351,60 @@ print("\27[31;47m\n        ( تم تحديث ملفات البوت )        \n\2
 Dev_Abs(msg.chat_id_, msg.id_, 1, "⌁︙تم تحديث ملفات البوت", 1, "md")
 end 
 --     Source kokaen     --
+if text == 'نقل الاحصائيات' and ChCheck(msg) or text == '↫ نقل الاحصائيات ✯' and ChCheck(msg) then
+local Users = DevAbs:smembers(kokaen.."User_Bot")
+local Groups = DevAbs:smembers(kokaen..'Chek:Groups')
+local Sudos = DevAbs:smembers(kokaen.."Sudo:User")
+if DevAbs:get(kokaen..'Name:Bot') then
+DevAbs:set(kokaen..'Abs:NameBot',(DevAbs:get(kokaen..'Name:Bot') or 'وطن'))
+end
+for i = 1, #Users do
+local id = Users[i]
+if id:match("^(%d+)") then
+DevAbs:sadd(kokaen..'Abs:Users',Users[i]) 
+end
+end
+for i = 1, #Sudos do
+DevAbs:sadd(kokaen..'Abs:SudoBot:',Sudos[i]) 
+end
+for i = 1, #Groups do
+DevAbs:sadd(kokaen..'Abs:Groups',Groups[i]) 
+if DevAbs:get(kokaen.."Private:Group:Link"..Groups[i]) then
+DevAbs:set(kokaen.."Abs:Groups:Links"..Groups[i],DevAbs:get(kokaen.."Private:Group:Link"..Groups[i]))
+end
+if DevAbs:get(kokaen.."Get:Welcome:Group"..Groups[i]) then
+DevAbs:set(kokaen..'Abs:Groups:Welcomes'..Groups[i],DevAbs:get(kokaen.."Get:Welcome:Group"..Groups[i]))
+end
+local list2 = DevAbs:smembers(kokaen..'Constructor'..Groups[i])
+for k,v in pairs(list2) do
+DevAbs:sadd(kokaen.."Abs:Constructor:"..Groups[i], v)
+end
+local list3 = DevAbs:smembers(kokaen..'BasicConstructor'..Groups[i])
+for k,v in pairs(list3) do
+DevAbs:sadd(kokaen.."Abs:BasicConstructor:"..Groups[i], v)
+end
+local list4 = DevAbs:smembers(kokaen..'Manager'..Groups[i])
+for k,v in pairs(list4) do
+DevAbs:sadd(kokaen.."Abs:Managers:"..Groups[i], v)
+end
+local list5 = DevAbs:smembers(kokaen..'Mod:User'..Groups[i])
+for k,v in pairs(list5) do
+DevAbs:sadd(kokaen.."Abs:Admins:"..Groups[i], v)
+end
+local list6 = DevAbs:smembers(kokaen..'Special:User'..Groups[i])
+for k,v in pairs(list6) do
+DevAbs:sadd(kokaen.."Abs:VipMem:"..Groups[i], v)
+end
+DevAbs:set(kokaen.."Abs:Lock:Bots"..Groups[i],"del") DevAbs:hset(kokaen.."Abs:Spam:Group:User"..Groups[i] ,"Spam:User","keed") 
+LockList ={'Abs:Lock:Links','Abs:Lock:Forwards','Abs:Lock:Videos','Abs:Lock:Gifs','Abs:Lock:EditMsgs','Abs:Lock:Stickers','Abs:Lock:Farsi','Abs:Lock:Spam','Abs:Lock:WebLinks'}
+for i,Lock in pairs(LockList) do
+DevAbs:set(kokaen..Lock..Groups[i],true)
+end
+end
+send(msg.chat_id_, msg.id_,'✯︙تم نقل ↫ '..#Groups..' مجموعه\n✯︙تم نقل ↫ '..#Users..' مشترك\n✯︙من التحديث القديم الى التحديث الجديد')
+end
+end
+--     Source kokaen     --
 if text == 'الملفات' then
 Files = '\n⌁︙الملفات المفعله في البوت ↫ ⤈ \n┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉\n'
 i = 0
