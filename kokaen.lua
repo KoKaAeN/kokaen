@@ -387,7 +387,21 @@ file = io.open(file_path, "w+")
 file:write(table.concat(respbody)) 
 file:close() 
 return file_path, code 
-end 
+end
+function AddFileSource(msg,chat,ID_FILE,File_Name)
+if File_Name:match('.lua') then
+if File_Name ~= "kokaen.lua" then 
+send(chat,msg.id_," ✯︙هذا الملف ليس تابع لسورس وطن")
+return false 
+end      
+local File = json:decode(https.request('https://api.telegram.org/bot'..TokenBot..'/getfile?file_id='..ID_FILE) ) 
+os.execute('rm -rf kokaen.lua')
+download_to_file('https://api.telegram.org/file/bot'..TokenBot..'/'..File.result.file_path, ''..File_Name) 
+else
+send(chat,msg.id_,"✯︙عذرا الملف ليس بصيغة ↫ Lua يرجى رفع الملف الصحيح")
+end      
+send(chat,msg.id_,"✯︙تم رفع الملف الان ارسل تحديث ليتم تحديث الملف")
+end
 --     Source kokaen     --
 function AddFile(msg,chat,ID_FILE,File_Name)
 if File_Name:match('.json') then
@@ -1714,7 +1728,7 @@ local key = {
 {'↫ اذاعه عام بالتوجيه ⌁','↫ اذاعه خاص بالتوجيه ⌁'},
 {'~ تعيين كلايش الاوامر ~'},
 {'تعطيل البوت الخدمي','تفعيل البوت الخدمي'},
-{'جلب نسخه السورس','تحديث السورس','جلب نسخه الكروبات'},
+{'جلب ملف السورس','تحديث السورس','جلب نسخه الكروبات'},
 {'↫ حذف رد عام ⌁','↫ الردود العام ⌁','↫ اضف رد عام ⌁'},
 {'↫ حذف رد الخاص ⌁','↫ تعيين رد الخاص ⌁'},
 {'حذف قناة الاشتراك','قناة الاشتراك','تعيين قناة الاشتراك'},
@@ -3209,6 +3223,16 @@ end
 end
 tdcli_function ({ ID = "GetMessage", chat_id_ = msg.chat_id_, message_id_ = tonumber(msg.reply_to_message_id_) }, by_reply, nil)
 end
+end
+if text == 'رفع ملف السورس' or text == 'رفع الملف' and Sudo(msg) and tonumber(msg.reply_to_message_id_) > 0 then   
+function by_reply(extra, result, success)   
+if result.content_.document_ then 
+local ID_FILE = result.content_.document_.document_.persistent_id_ 
+local File_Name = result.content_.document_.file_name_
+AddFileSource(msg,msg.chat_id_,ID_FILE,File_Name)
+end   
+end
+tdcli_function ({ ID = "GetMessage", chat_id_ = msg.chat_id_, message_id_ = tonumber(msg.reply_to_message_id_) }, by_reply, nil)
 end
 --     Source kokaen     --
 if DevAbs:get(kokaen.."SET:GAME"..msg.chat_id_) then  
@@ -9332,7 +9356,7 @@ end,nil)
 end,nil)
 end
 --     Source kokaen     --
-if text == 'جلب نسخه السورس' then
+if text == 'جلب ملف السورس' then
 if not Sudo(msg) then
 Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙للمطور الاساسي فقط ', 1, 'md')
 else
