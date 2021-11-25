@@ -4183,11 +4183,18 @@ end
 --     Source kokaen     --
 if text == "سورس" and ChCheck(msg) or text == "السورس" and ChCheck(msg) or text == "يا سورس" and ChCheck(msg) or text == "ياسورس" and ChCheck(msg) or text == "↫  السورس ⌁" and ChCheck(msg) then
 Text = [[
-Welcome To Source
-⌁︙[kokaen TEAM](https://t.me/VV_dt)
+ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ sᴏᴜʀᴄᴇ ᴋᴏᴋᴀᴀᴇɴ
+
+[⋄  ᴋᴏᴋᴀᴀᴇɴ ᴄʜᴀɴɴᴇʟ](http://t.me/VV_dt)
+
+[⋄  ɪɴғᴏ sᴏᴜʀᴄᴇ](http://t.me/lj_TT)
+
+[⋄  ᴋᴏᴋᴀᴀᴇɴ ᴅᴇᴠᴇʟᴏᴘᴇʀ](http://t.me/ALsaeed2)
+
+[⋄  ʙᴏᴛ ᴋᴏᴋᴀᴀᴇɴ ](http://t.me/Coca1bot)
 ]]
 keyboard = {} 
-keyboard.inline_keyboard = {{{text = '⌁ Source Channel',url="https://t.me/VV_dt"}},{{text = '⌁ Developer',url="t.me/ALsaeed2"},{text = '⌁ Tws kokaen',url="https://t.me/Coca1bot"}},{{text= '⌁ Exp Source .',url="https://t.me/lj_TT"}}}
+keyboard.inline_keyboard = {{{text = '⌁ Source Channel',url="https://t.me/VV_dt"}}}
 local msg_id = msg.id_/2097152/0.5
 https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/VV_dt&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 return false
@@ -4417,6 +4424,24 @@ getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),hena)
 end
 end
 end
+if text == 'تحبني' and ChCheck(msg) then
+if not DevAbs:get(kokaen..'Abs:Lock:Games'..msg.chat_id_) then
+local thbni = {
+'لافيووو وايد وايد 💘🤸‍♀','احبڪ ڪد الدنيا 🦦💕','هوايه احبك كومات 🤗😍','الحب نخلق الڪ وحدڪ 💘',''
+}  
+Dev_Abs(msg.chat_id_, msg.id_, 1, ''..thbni[math.random(#thbni)]..'' , 1, 'md')  
+return false
+end
+end
+if text == 'جوعان' and ChCheck(msg) then
+if not DevAbs:get(kokaen..'Abs:Lock:Games'..msg.chat_id_) then
+local joaan = {
+'تعع انا اعزمڪ شعندي غيرڪ حتى تجوع 🥺💘','اصير الڪ اڪل 💘🔥','اطلب بعيوني عمغي وتدلل 💘🦦','اشوي الڪ من ڪلبي 🤍🔥'
+}  
+Dev_Abs(msg.chat_id_, msg.id_, 1, ''..joaan[math.random(#joaan)]..'' , 1, 'md')  
+return false
+end
+end
 if text == ("بوسه") or text == ("بعد بوسه") or text == ("ضل بوس") or text == ("بوسه بعد") or text == ("بوسها") or text == ("بعد بوسها") or text == ("ضل بوس") or text == ("بوسها بعد") or text == ("بوسهه") then
 if not DevAbs:get(kokaen..'Abs:Lock:Stupid'..msg.chat_id_) then
 function bosh(extra, result, success)
@@ -4430,7 +4455,7 @@ return false
 end 
 local KoKaAeN = "صارر ستاذيي 🏃🏻‍♂️♥️" 
 Dev_Abs(msg.chat_id_, msg.id_, 1,KoKaAeN, 1, 'md') 
-local KoKaAeN = {"مواححح افيش عافيههه😍🔥💗","امممووااهحح شهلعسل🥺🍯💘","مواححح،ءوفف اذوب🤤💗"} 
+local KoKaAeN = {"مواححح افيش عافيههه😍🔥💗","امممووااهحح شهلعسل🥺🍯💘","مواححح،ءوفف اذوب🤤💗","مووووووواح ع شفةة ♡","كل شويه ابوسه كافي 😏","مووووووووواححح 💋","البوسه بالف حمبي 🌝💋","خدك/ج نضيف 😂","خلي يزحفلي وابوسه 🙊😻","ماابوسه والله هذا زاحف🦎","مابوس ولي😌😹"} 
 Dev_Abs(msg.chat_id_, result.id_, 1,''..KoKaAeN[math.random(#KoKaAeN)], 1, 'md') 
 end 
 if tonumber(msg.reply_to_message_id_) == 0 then
